@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098602200495",
+    "project_id": "simple-todo-app-6bae7",
+    "storage_bucket": "simple-todo-app-6bae7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098602200495:android:35bc7652973c006bb4035a",
+        "android_client_info": {
+          "package_name": "com.example.simple_todo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_cwd7HytetCkn7lf2z4Ag6gfwHePWFRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

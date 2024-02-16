@@ -1,0 +1,156 @@
+{
+    "welcome" : "Welcome",
+    "@welcome" : {
+        "description" : "Welcome to you"
+    },
+    "login": "Login",
+    "@login": {
+        "description": "login"
+    },
+    "enterFullName": "Enter your full name",
+    "@enterFullName": {
+        "description": "Enter your full name"
+    },
+    "enterEmail": "Enter your email",
+    "@enterEmail": {
+        "description": "Enter your email"
+    },
+    "enterPassword": "Enter password",
+    "@enterPassword": {
+        "description": "Enter password"
+    },
+    "confirmPassword": "Confirm password",
+    "@confirmPassword": {
+        "description": "Confirm password"
+    },
+    "noAccount": "Don't have an account ?",
+    "@noAccount": {
+        "description": "Don't have an account ?"
+    },
+    "haveAccount": "Already have an account ?",
+    "@haveAccount": {
+        "description": "Already have an account ?"
+    },
+    "signUp": "Sign Up",
+    "@signUp": {
+        "description": "Sign Up"
+    },
+    "signUpDescription": "Let's create your account!",
+    "@signUpDescription": {
+        "description": "Let's create your account!"
+    },
+    "createAccount": "Create Account",
+    "@createAccount": {
+        "description": "Create Account"
+    },
+    "projectMonitoring": "Project Monitoring",
+    "@projectMonitoring": {
+        "description": "Project Monitoring"
+    },
+    "myTaskList": "My Task List",
+    "@myTaskList": {
+        "description": "Project Monitoring"
+    },
+    "subTaskNumber" : "{subTaskCount} Sub Task",
+    "@subTaskNumber" : {
+        "description" : "Event en cours",
+        "placeholders" : {
+            "subTaskCount" : {
+                "type" : "int",
+                "example" : "16"
+            }
+        }
+    },
+    "complationRate": "Complation rate",
+    "@complationRate": {
+        "description": "Complation rate"
+    },
+    "urgently": "Urgently",
+    "@urgently": {
+        "description": "Urgently"
+    },
+    "important": "Important",
+    "@important": {
+        "description": "Important"
+    },
+    "medium": "Medium",
+    "@medium": {
+        "description": "Medium"
+    },
+    "calm": "Calm",
+    "@calm": {
+        "description": "Calm"
+    },
+    "todaysTask": "Today's Tasks",
+    "@todaysTask": {
+        "description": "Today's Tasks"
+    },
+    "today": "Today",
+    "@today": {
+        "description": "Today"
+    },
+    "tomorrowTask": "Task for Tomorrow",
+    "@tomorrowTask": {
+        "description": "Task for Tomorrow"
+    },
+    "taskLate" : "{daysNumber} day{dayPlurial} Late",
+    "@taskLate" : {
+        "description" : "Event en cours",
+        "placeholders" : {
+            "daysNumber" : {
+                "type" : "int",
+                "example" : "16"
+            },
+            "dayPlurial" : {
+                "type" : "String",
+                "example" : "s"
+            }
+        }
+    },
+    "taskDaysLeft" : "{daysLeftNumber} days Left",
+    "@taskDaysLeft" : {
+        "description" : "Event en cours",
+        "placeholders" : {
+            "daysLeftNumber" : {
+                "type" : "int",
+                "example" : "16"
+            }
+        }
+    },
+    "descriptionTask": "Description Task",
+    "@descriptionTask": {
+        "description": "Description Task"
+    },
+    "teamWorkspace": "Team Workspace",
+    "@teamWorkspace": {
+        "description": "Team Workspace"
+    },
+    "myWorkspace": "My Workspace",
+    "@myWorkspace": {
+        "description": "My Workspace"
+    },
+    "projectCreated": "Created Project",
+    "@projectCreated": {
+        "description": "Created Project"
+    },
+    "projectAssigned": "Assigned Project",
+    "@projectAssigned": {
+        "description": "Created Project"
+    },
+    "progress": "In Progress",
+    "@progress": {
+        "description": "In Progress"
+    },
+    "paused": "Paused",
+    "@paused": {
+        "description": "Paused"
+    },
+    "done": "Done",
+    "@done": {
+        "description": "Done"
+    },
+    "accountSetting": "Account Setting",
+    "@accountSetting": {
+        "description": "Account Setting"
+    }
+}

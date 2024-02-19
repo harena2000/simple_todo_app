@@ -3,10 +3,10 @@ import 'package:simple_todo_app/app/constant/app_assets.dart';
 import 'package:simple_todo_app/app/constant/app_colors.dart';
 import 'package:simple_todo_app/app/model/todo_model.dart';
 
-enum ProjectStatus { closed, paused, inProgress }
+enum ProjectStatus { closed, inProgress }
 
 class ProjectModel {
-  late int projectId;
+  String? projectId;
   late String title;
   late String description;
   Color? projectColor;
@@ -20,17 +20,29 @@ class ProjectModel {
     this.projectColor = AppColors.green,
     this.imageAsset = AppAssets.waveTransparent,
     this.status = ProjectStatus.inProgress,
-    required this.projectId,
+    this.projectId = "",
     this.todoTaskList,
   });
 
+  void setProjectId(String id) {
+    projectId = id;
+  }
+
+  void setProjectTask(TodoModel todoModel) {
+    todoTaskList!.add(todoModel);
+  }
+
+  void deleteProjectTask(TodoModel todoModel) {
+    todoTaskList!.add(todoModel);
+  }
+
   ProjectModel.fromJson(Map<String, dynamic> json) {
-    title = json['id'];
-    description = json['title'];
-    projectColor = json['price'];
-    imageAsset = json['description'];
-    status = json['category'];
-    projectId = json['image'];
+    title = json['title'];
+    description = json['description'];
+    projectColor = json['projectColor'];
+    imageAsset = json['imageAsset'];
+    status = json['status'];
+    projectId = json['projectId'];
     todoTaskList = [];
   }
 
@@ -41,7 +53,7 @@ class ProjectModel {
         'projectColor':
             "0x${projectColor!.value.toRadixString(16).toUpperCase()}",
         'imageAsset': imageAsset,
-        'status': status.toString(),
+        'status': statusToString(),
         'todoTaskList': todoTaskList,
       };
 
@@ -49,8 +61,6 @@ class ProjectModel {
     switch (status!) {
       case ProjectStatus.inProgress:
         return "inProgress";
-      case ProjectStatus.paused:
-        return "paused";
       case ProjectStatus.closed:
         return "closed";
     }

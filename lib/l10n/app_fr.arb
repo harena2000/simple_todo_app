@@ -31,5 +31,9 @@
     "enterDescription": "Entrez la description",
     "inputEmptyError": "Cette champs ne peut pas être vide",
     "save": "Enregistrer",
-    "createTask": "Créer une tâches"
+    "createTask": "Créer une tâches",
+    "delete": "Supprimé",
+    "edit": "Modifier",
+    "closeProject": "Clôturé le Projet",
+    "projectAlreadyClosed": "Projet déjà clôturé"
 }

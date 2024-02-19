@@ -152,5 +152,21 @@
     "createTask": "Create a Task",
     "@createTask": {
         "description": "Save"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Delete"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "Edit"
+    },
+    "closeProject": "Close Project",
+    "@closeProject": {
+        "description": "Close Project"
+    },
+    "projectAlreadyClosed": "Project already Closed",
+    "@projectAlreadyClosed": {
+        "description": "Project already Closed"
     }
 }

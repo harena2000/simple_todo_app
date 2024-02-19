@@ -7,7 +7,17 @@ class FirebaseService {
   Future<dynamic> addProjectService(ProjectModel projectModel) async {
     try {
       var response =
-          await database.collection('project').add(projectModel.toJson());
+          await database.collection('projects').add(projectModel.toJson());
+      return response;
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  Future<dynamic> updateProjectService(
+      String id, Map<String, dynamic> data) async {
+    try {
+      var response = await database.collection('projects').doc(id).update(data);
       return response;
     } catch (e) {
       throw Exception();
@@ -16,7 +26,7 @@ class FirebaseService {
 
   Future<List<QueryDocumentSnapshot?>> loadProjectService() async {
     try {
-      var response = await database.collection('project').snapshots().first;
+      var response = await database.collection('projects').snapshots().first;
       List<QueryDocumentSnapshot?> data = response.docs.toList();
       return data;
     } catch (e) {

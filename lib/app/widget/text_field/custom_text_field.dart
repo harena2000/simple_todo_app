@@ -18,7 +18,7 @@ class CustomTextField extends StatefulWidget {
   final bool? enableInput;
   final String? Function(String?)? validator;
   final void Function(String value) onChange;
-  final TextEditingController? controller;
+  final String? initialValue;
   final int? maxLines;
 
   const CustomTextField({
@@ -38,7 +38,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.enableInput = true,
     this.validator,
-    this.controller,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -53,7 +53,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return FadeInLeft(
       duration: Duration(milliseconds: widget.duration ?? 350),
       child: TextFormField(
-        controller: widget.controller,
+        initialValue: widget.initialValue,
         scrollPhysics: const BouncingScrollPhysics(),
         validator: (value) {
           if (widget.validator != null) {

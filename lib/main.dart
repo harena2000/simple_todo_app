@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:simple_todo_app/app/provider/project_provider.dart';
 import 'package:simple_todo_app/app/provider/todo_provider.dart';
-import 'package:simple_todo_app/app/screen/main_page.dart';
+import 'package:simple_todo_app/app/screen/project_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         Locale('en'),
         Locale('fr'),
       ],
-      home: const MainPage(),
+      home: const ProjectScreen(),
     );
   }
 }

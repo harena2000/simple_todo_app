@@ -22,14 +22,16 @@ class SimpleButton extends StatelessWidget {
       child: TextButton(
         onPressed: () => onPressed(),
         style: TextButton.styleFrom(
-            backgroundColor: backgroundColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15))),
+          backgroundColor: backgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             text,
-            style: TextStyle(color: foregroundColor, fontSize: 18),
+            style: TextStyle(color: foregroundColor, fontSize: 15),
           ),
         ),
       ),

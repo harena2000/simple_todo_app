@@ -1,19 +1,33 @@
 enum TodoFlag { urgently, important, medium, none }
 
 class TodoModel {
-  final String? taskId;
-  final String title;
-  final String description;
-  final TodoFlag flag;
-  final DateTime? taskStart;
-  final bool? status;
+  String? taskId;
+  late String title;
+  late String description;
+  TodoFlag? flag;
+  bool? status;
 
   TodoModel({
     required this.title,
     required this.description,
-    this.taskStart,
-    required this.flag,
+    this.flag = TodoFlag.none,
     this.taskId,
     this.status = false,
   });
+
+  TodoModel.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    description = json['description'];
+    flag = json['flag'];
+    status = json['status'];
+    taskId = json['taskId'];
+  }
+
+  Map<String, dynamic> toJson() => {
+        'taskId': taskId,
+        'title': title,
+        'description': description,
+        'flag': title,
+        'status': status,
+      };
 }

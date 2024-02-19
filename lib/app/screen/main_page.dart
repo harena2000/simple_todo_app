@@ -4,7 +4,7 @@ import 'package:simple_todo_app/app/constant/app_colors.dart';
 import 'package:simple_todo_app/app/screen/settings/setting_screen.dart';
 import 'package:simple_todo_app/app/screen/dashboard/dashboard_screen.dart';
 import 'package:simple_todo_app/app/screen/project/project_screen.dart';
-import 'package:simple_todo_app/app/screen/project/simple_todo_screen.dart';
+import 'package:simple_todo_app/app/screen/todo/simple_todo_screen.dart';
 import 'package:simple_todo_app/app/widget/navbar/bottom_navbar_button.dart';
 
 class MainPage extends StatefulWidget {

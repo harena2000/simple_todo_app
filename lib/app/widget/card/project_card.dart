@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:simple_todo_app/app/constant/app_assets.dart';
 import 'package:simple_todo_app/app/constant/app_colors.dart';
 import 'package:simple_todo_app/app/model/project_model.dart';
+import 'package:simple_todo_app/app/model/todo_model.dart';
 
 class ProjectCard extends StatefulWidget {
   final ProjectModel projectModel;
@@ -19,12 +19,35 @@ class ProjectCard extends StatefulWidget {
 }
 
 class _ProjectCardState extends State<ProjectCard> {
+  double projectPercentage = 0;
+
+  void projectEvolutionPercentage() {
+    List<TodoModel> done = widget.projectModel.todoTaskList!
+        .where(
+          (element) => element.status == true,
+        )
+        .toList();
+    if (widget.projectModel.todoTaskList!.isNotEmpty) {
+      double percentage =
+          (done.length * 100) / widget.projectModel.todoTaskList!.length;
+      setState(() {
+        projectPercentage = percentage;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    projectEvolutionPercentage();
+  }
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations word = AppLocalizations.of(context)!;
     return InkWell(
       borderRadius: BorderRadius.circular(30),
-      splashColor: AppColors.green,
+      splashColor: widget.projectModel.projectColor,
       onTap: () => widget.onTap!(),
       child: Ink(
         child: SizedBox(
@@ -43,9 +66,9 @@ class _ProjectCardState extends State<ProjectCard> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: widget.projectModel.projectColor,
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: AssetImage(
-                          AppAssets.waveTransparent,
+                          widget.projectModel.imageAsset!,
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -56,12 +79,12 @@ class _ProjectCardState extends State<ProjectCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "The project title is long",
+                            widget.projectModel.title,
                             overflow: TextOverflow.fade,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -69,8 +92,9 @@ class _ProjectCardState extends State<ProjectCard> {
                             height: 10,
                           ),
                           Text(
-                            word.subTaskNumber(16),
-                            style: TextStyle(
+                            word.subTaskNumber(
+                                widget.projectModel.todoTaskList!.length),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 13,
                               fontWeight: FontWeight.w100,
@@ -95,11 +119,11 @@ class _ProjectCardState extends State<ProjectCard> {
                             children: [
                               Text(
                                 word.complationRate,
-                                style: TextStyle(fontSize: 15),
+                                style: const TextStyle(fontSize: 15),
                               ),
                               Text(
-                                "70%",
-                                style: TextStyle(
+                                "${projectPercentage.toStringAsFixed(1)}%",
+                                style: const TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -112,7 +136,7 @@ class _ProjectCardState extends State<ProjectCard> {
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: LinearPercentIndicator(
                             lineHeight: 6,
-                            percent: 0.7,
+                            percent: projectPercentage / 100,
                             animation: true,
                             animationDuration: 500,
                             backgroundColor: AppColors.grey,

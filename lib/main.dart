@@ -2,9 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_todo_app/app/config/firebase_options.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:simple_todo_app/app/provider/project_provider.dart';
+import 'package:simple_todo_app/app/provider/todo_provider.dart';
 import 'package:simple_todo_app/app/screen/main_page.dart';
 
 void main() async {
@@ -17,7 +20,21 @@ void main() async {
   FlutterStatusbarcolor.setNavigationBarColor(Colors.transparent);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [
     SystemUiOverlay.top,
-  ]).then((value) => runApp(const MyApp()));
+  ]).then(
+    (value) => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => ProjectProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => TodoProvider(),
+          )
+        ],
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

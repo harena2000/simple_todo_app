@@ -3,46 +3,6 @@
     "@welcome" : {
         "description" : "Welcome to you"
     },
-    "login": "Login",
-    "@login": {
-        "description": "login"
-    },
-    "enterFullName": "Enter your full name",
-    "@enterFullName": {
-        "description": "Enter your full name"
-    },
-    "enterEmail": "Enter your email",
-    "@enterEmail": {
-        "description": "Enter your email"
-    },
-    "enterPassword": "Enter password",
-    "@enterPassword": {
-        "description": "Enter password"
-    },
-    "confirmPassword": "Confirm password",
-    "@confirmPassword": {
-        "description": "Confirm password"
-    },
-    "noAccount": "Don't have an account ?",
-    "@noAccount": {
-        "description": "Don't have an account ?"
-    },
-    "haveAccount": "Already have an account ?",
-    "@haveAccount": {
-        "description": "Already have an account ?"
-    },
-    "signUp": "Sign Up",
-    "@signUp": {
-        "description": "Sign Up"
-    },
-    "signUpDescription": "Let's create your account!",
-    "@signUpDescription": {
-        "description": "Let's create your account!"
-    },
-    "createAccount": "Create Account",
-    "@createAccount": {
-        "description": "Create Account"
-    },
     "projectMonitoring": "Project Monitoring",
     "@projectMonitoring": {
         "description": "Project Monitoring"
@@ -152,5 +112,45 @@
     "accountSetting": "Account Setting",
     "@accountSetting": {
         "description": "Account Setting"
+    },
+    "createProject": "Create a Project",
+    "@createProject": {
+        "description": "Create a Project"
+    },
+    "title": "Title",
+    "@title": {
+        "description": "Title"
+    },
+    "description": "Description",
+    "@description": {
+        "description": "Description"
+    },
+    "chooseColor": "Choose a color",
+    "@chooseColor": {
+        "description": "Choose a color"
+    },
+    "chooseAsset": "Choose an asset",
+    "@chooseAsset": {
+        "description": "Description"
+    },
+    "enterTitle": "Enter the title",
+    "@enterTitle": {
+        "description": "Enter the title"
+    },
+    "enterDescription": "Enter the description",
+    "@enterDescription": {
+        "description": "Enter the description"
+    },
+    "inputEmptyError": "This field cannot be blank",
+    "@inputEmptyError": {
+        "description": "This field cannot be blank"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Save"
+    },
+    "createTask": "Create a Task",
+    "@createTask": {
+        "description": "Save"
     }
 }

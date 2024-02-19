@@ -1,15 +1,5 @@
 {
     "welcome": "Bienvenue",
-    "login": "Se Connecter",
-    "enterFullName": "Entrer votre nom complet",
-    "enterEmail": "Entrer votre email",
-    "enterPassword": "Mot de passe",
-    "confirmPassword": "Confirmé le Mot de passe",
-    "noAccount": "Vous n'avez pas de compte ?",
-    "haveAccount": "Vous avez déjà un compte ?",
-    "signUp": "Sign Up",
-    "signUpDescription": "Créons votre compte !",
-    "createAccount": "Créer mon Compte",
     "projectMonitoring": "Suivi des Projet",
     "myTaskList": "Mes liste de tâches",
     "subTaskNumber" : "{subTaskCount} Sous-Tâche",
@@ -31,5 +21,15 @@
     "progress": "En cours",
     "paused": "Pause",
     "done": "Terminer",
-    "accountSetting" : "Paramètre du compte"
+    "accountSetting" : "Paramètre du compte",
+    "createProject": "Créez un projet.",
+    "title": "Titre",
+    "description": "Description",
+    "chooseColor": "Choisissez une couleur",
+    "chooseAsset": "Choisissez un asset",
+    "enterTitle": "Entrez le titre",
+    "enterDescription": "Entrez la description",
+    "inputEmptyError": "Cette champs ne peut pas être vide",
+    "save": "Enregistrer",
+    "createTask": "Créer une tâches"
 }

@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:simple_todo_app/app/constant/app_colors.dart';
 import 'package:simple_todo_app/app/model/project_model.dart';
-import 'package:simple_todo_app/app/widget/card/project_card.dart';
+import 'package:simple_todo_app/app/model/todo_model.dart';
+import 'package:simple_todo_app/app/widget/card/todo_card.dart';
 
 class ProjectDetailsScreen extends StatefulWidget {
   final ProjectModel projectModel;
@@ -20,6 +21,7 @@ class ProjectDetailsScreen extends StatefulWidget {
 class _ProjectDetailsScreenState extends State<ProjectDetailsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  int tabIndex = 0;
 
   @override
   void initState() {
@@ -33,11 +35,18 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen>
     _tabController.dispose();
   }
 
+  Color tabBackgroundColor() {
+    if (tabIndex == 1) {
+      return Colors.green;
+    }
+    return AppColors.orange;
+  }
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations word = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.lightGrey,
       appBar: AppBar(
         leading: Container(),
         leadingWidth: 10,
@@ -45,36 +54,46 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen>
         scrolledUnderElevation: 50,
         backgroundColor: AppColors.green,
         foregroundColor: Colors.white,
-        title: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
+        title: MediaQuery(
+          data: const MediaQueryData(
+            textScaler: TextScaler.linear(0.8),
+          ),
+          child: Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
                 borderRadius: BorderRadius.circular(15),
-                color: AppColors.lightGrey.withOpacity(0.5),
-              ),
-              child: const Icon(
-                FontAwesomeIcons.userGroup,
-                size: 18,
-              ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(word.teamWorkspace,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(
-                  "Mahefaniaina Harena Rico",
-                  style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w100),
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: AppColors.lightGrey.withOpacity(0.5),
+                  ),
+                  child: const Icon(
+                    FontAwesomeIcons.chevronLeft,
+                    size: 18,
+                  ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    word.projectMonitoring,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
         actions: [
           SizedBox(
@@ -99,82 +118,120 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen>
           ),
         ],
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            bottom: TabBar(
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  15,
+      body: MediaQuery(
+        data: const MediaQueryData(
+          textScaler: TextScaler.linear(0.8),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(
+                      15,
+                    ),
+                  ),
+                  child: TabBar(
+                    controller: _tabController,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ),
+                      color: tabBackgroundColor(),
+                    ),
+                    onTap: (value) {
+                      setState(() {
+                        tabIndex = value;
+                      });
+                    },
+                    dividerColor: Colors.transparent,
+                    splashBorderRadius: BorderRadius.circular(30),
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.black,
+                    tabs: [
+                      Tab(
+                        text: word.progress,
+                      ),
+                      Tab(
+                        text: word.done,
+                      ),
+                    ],
+                  ),
                 ),
-                color: Colors.green,
               ),
-              dividerColor: Colors.transparent,
-              splashBorderRadius: BorderRadius.circular(30),
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.black,
-              tabs: [
-                // first tab [you can add an icon using the icon property]
-                Tab(
-                  text: word.projectAssigned,
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Project Name",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  clipBehavior: Clip.antiAlias,
+                  children: [
+                    // first tab bar view widget
+                    ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: TodoCard(
+                            todoModel: TodoModel(
+                              title: "Task title $index",
+                              description:
+                                  "An on the Flutter SDK's standard ExpansionTile, to create a Google Material Theme inspired raised widget, ExpansionTileCard, instead.",
+                              flag: TodoFlag.urgently,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
 
-                // second tab [you can add an icon using the icon property]
-                Tab(
-                  text: word.projectCreated,
+                    // second tab bar view widget
+                    ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: TodoCard(
+                            todoModel: TodoModel(
+                              title: "Task title $index",
+                              description:
+                                  "An on the Flutter SDK's standard ExpansionTile, to create a Google Material Theme inspired raised widget, ExpansionTileCard, instead.",
+                              flag: TodoFlag.urgently,
+                              status: true,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SliverFillRemaining(
-            child: TabBarView(
-              controller: _tabController,
-              clipBehavior: Clip.antiAlias,
-              children: [
-                // first tab bar view widget
-                ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      child: ProjectCard(
-                        width: MediaQuery.of(context).size.width,
-                        projectModel: ProjectModel(
-                          title: "Bonjour Title",
-                          description: "Voici le description du projet",
-                          projectCreator: "Me",
-                          projectId: "eefsge",
-                        ),
-                      ),
-                    );
-                  },
-                ),
-
-                // second tab bar view widget
-                ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      child: ProjectCard(
-                        width: MediaQuery.of(context).size.width,
-                        projectModel: ProjectModel(
-                          title: "Bonjour Title",
-                          description: "Voici le description du projet",
-                          projectCreator: "Me",
-                          projectId: "eefsge",
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

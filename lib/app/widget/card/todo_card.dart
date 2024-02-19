@@ -1,6 +1,5 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:simple_todo_app/app/constant/app_colors.dart';
 import 'package:simple_todo_app/app/model/todo_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +20,6 @@ class _TodoCardState extends State<TodoCard> {
     super.initState();
 
     isChecked = widget.todoModel.status!;
-    print(DateTime.now().toString());
   }
 
   @override
@@ -49,33 +47,16 @@ class _TodoCardState extends State<TodoCard> {
           fontSize: 20,
         ),
       ),
-      subtitle: Column(
+      subtitle: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(
-                FontAwesomeIcons.calendarCheck,
-                size: 13,
-              ),
-              Container(
-                  margin: const EdgeInsets.only(top: 1, left: 5),
-                  child: Text(
-                      taskStartingStatus(widget.todoModel.taskStart!, word))),
-            ],
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Chip(
-                labelStyle: TextStyle(color: Colors.white, fontSize: 11),
-                side: BorderSide.none,
-                backgroundColor: widget.todoModel.flag.flagColor,
-                label: Text(
-                  flagString(widget.todoModel.flag, word),
-                ),
-              ),
-            ],
+          Chip(
+            labelStyle: const TextStyle(color: Colors.white, fontSize: 11),
+            side: BorderSide.none,
+            backgroundColor: widget.todoModel.flag!.flagColor,
+            label: Text(
+              flagString(widget.todoModel.flag!, word),
+            ),
           ),
         ],
       ),
